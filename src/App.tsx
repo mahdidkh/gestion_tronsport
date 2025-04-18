@@ -4,6 +4,7 @@ import { MerchandiseForm } from './components/merchandise/MerchandiseForm';
 import { Login } from './components/auth/Login';
 import { Register } from './components/auth/Register';
 import { ShipmentHistory, ErrorBoundary } from './components/merchandise/ShipmentHistory';
+import HealthCheck from './components/HealthCheck';
 import './App.css';
 
 function App() {
@@ -24,7 +25,12 @@ function App() {
   return (
     <div className="app">
       {currentPage !== 'login' && currentPage !== 'register' && (
-        <NavBar onNavigate={handleNavigate} currentPage={currentPage} />
+        <>
+          <NavBar onNavigate={handleNavigate} currentPage={currentPage} />
+          <div style={{ padding: '0 20px' }}>
+            <HealthCheck />
+          </div>
+        </>
       )}
 
       <main className="app-main">
