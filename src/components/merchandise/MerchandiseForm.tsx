@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent } from 'react';
+import { useState, ChangeEvent } from 'react';
 import type { Merchandise, TransportType, Incoterm, Contact } from '../../types';
 import './MerchandiseForm.css';
 import { ShipmentDialog } from './ShipmentDialog';

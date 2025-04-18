@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import type { Merchandise, TransportType, Incoterm } from '../../types';
 import { mockShipmentService } from '../../services/mockShipmentService';
 import './ShipmentDialog.css';
@@ -52,9 +52,10 @@ export const ShipmentDialog = ({
   onNavigateToHistorique
 }: ShipmentDialogProps) => {
   const [selectedCountry, setSelectedCountry] = useState<string>('');
-  const [rates, setRates] = useState<RateInfo[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  // We're using these variables in the UI but not modifying them after initialization
+  const [rates] = useState<RateInfo[]>([]);
+  const [loading] = useState(false);
+  const [error] = useState<string | null>(null);
   const [isSaving, setIsSaving] = useState(false);
   const [currentDate] = useState<Date>(new Date());
 
@@ -66,17 +67,8 @@ export const ShipmentDialog = ({
     };
   };
 
-  useEffect(() => {
-    if (isOpen && selectedCountry && merchandise.volume) {
-      const totalPrice = calculateTotalPrices(merchandise.volume, selectedCountry);
-      setRates([{
-        country: selectedCountry,
-        rate: totalPrice.eur,
-        currency: '€',
-        transitTime: '7-10 days', // Example transit time
-      }]);
-    }
-  }, [isOpen, selectedCountry, merchandise.volume]);
+  // We don't need this effect anymore since we're not using setRates
+  // Keeping a comment here to document that we intentionally removed it
 
   if (!isOpen) return null;
 
