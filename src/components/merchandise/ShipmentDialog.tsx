@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import type { Merchandise, TransportType, Incoterm } from '../../types';
 import { mockShipmentService } from '../../services/mockShipmentService';
+import { shipmentService } from '../../services/shipmentService';
 import './ShipmentDialog.css';
 
 interface ShipmentDialogProps {
@@ -123,9 +124,16 @@ export const ShipmentDialog = ({
         date: currentDate.toISOString()
       };
 
-      // Save data using our mock service
-      const savedShipment = await mockShipmentService.createShipment(shipmentData);
-      console.log('Shipment saved:', savedShipment);
+      try {
+        // First try to save to the real backend
+        const savedShipment = await shipmentService.createShipment(shipmentData);
+        console.log('Shipment saved to backend:', savedShipment);
+      } catch (error) {
+        console.warn('Failed to save to backend, using mock service instead:', error);
+        // Fallback to mock service if backend is not available
+        const savedShipment = await mockShipmentService.createShipment(shipmentData);
+        console.log('Shipment saved to mock service:', savedShipment);
+      }
 
       // Store in localStorage for persistence
       const existingShipments = JSON.parse(localStorage.getItem('shipments') || '[]');

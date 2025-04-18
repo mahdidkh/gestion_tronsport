@@ -31,7 +31,7 @@ export const Register = ({ onNavigateToLogin }: RegisterProps) => {
         name: formData.name,
         email: formData.email,
         password: formData.password,
-        confirmPassword: formData.confirmPassword,
+        confirmPassword: formData.confirmPassword
       });
       onNavigateToLogin();
     } catch (err: any) {
