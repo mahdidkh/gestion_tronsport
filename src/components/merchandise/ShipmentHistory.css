@@ -1,0 +1,327 @@
+.shipment-history {
+  padding: 1rem 0;
+}
+
+.shipment-history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #3498db;
+}
+
+.view-toggle {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.view-button {
+  background-color: #f8f9fa;
+  border: 1px solid #dadce0;
+  border-radius: 4px;
+  padding: 0.4rem 0.6rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.view-button:hover {
+  background-color: #e9ecef;
+}
+
+.view-button.active {
+  background-color: #3498db;
+  color: white;
+  border-color: #3498db;
+}
+
+.shipment-history h2 {
+  color: #2c3e50;
+  margin: 0;
+}
+
+.refresh-button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.refresh-button:hover {
+  background-color: #2980b9;
+}
+
+.refresh-button:disabled {
+  background-color: #95a5a6;
+  cursor: not-allowed;
+}
+
+.shipment-list.card-view {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 1.5rem;
+}
+
+.shipment-list.list-view {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.shipment-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.shipment-table th,
+.shipment-table td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.shipment-table th {
+  background-color: #3498db;
+  color: white;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.shipment-table tr:last-child td {
+  border-bottom: none;
+}
+
+.shipment-table tr:hover {
+  background-color: #f8f9fa;
+}
+
+.shipment-name {
+  font-weight: 600;
+  color: #3498db;
+}
+
+.secondary-text {
+  font-size: 0.8rem;
+  color: #7f8c8d;
+  margin-top: 0.2rem;
+}
+
+.delete-button-small {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.3rem 0.5rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.delete-button-small:hover {
+  background-color: #c0392b;
+}
+
+.delete-button-small:disabled {
+  background-color: #95a5a6;
+  cursor: not-allowed;
+}
+
+/* Responsive styles for list view */
+@media (max-width: 1200px) {
+  .shipment-table th,
+  .shipment-table td {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  .shipment-table th:nth-child(2),
+  .shipment-table td:nth-child(2),
+  .shipment-table th:nth-child(6),
+  .shipment-table td:nth-child(6) {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .shipment-table th:nth-child(4),
+  .shipment-table td:nth-child(4),
+  .shipment-table th:nth-child(5),
+  .shipment-table td:nth-child(5) {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .shipment-table th:nth-child(7),
+  .shipment-table td:nth-child(7),
+  .shipment-table th:nth-child(8),
+  .shipment-table td:nth-child(8) {
+    display: none;
+  }
+
+  .view-toggle {
+    margin-bottom: 0.5rem;
+  }
+
+  .shipment-history-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.shipment-card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.shipment-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.shipment-header {
+  padding: 1rem;
+  background-color: #3498db;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.shipment-header-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.delete-button {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: background-color 0.2s;
+}
+
+.delete-button:hover {
+  background-color: #c0392b;
+}
+
+.delete-button:disabled {
+  background-color: #95a5a6;
+  cursor: not-allowed;
+}
+
+.shipment-header h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.shipment-type {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.shipment-date {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 0.3rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 0.3rem 0.5rem;
+  border-radius: 4px;
+  width: fit-content;
+}
+
+.date-icon {
+  font-size: 1rem;
+}
+
+.date-text {
+  font-weight: 500;
+}
+
+.shipment-details {
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.detail-group {
+  margin-bottom: 1rem;
+}
+
+.detail-group h4 {
+  color: #3498db;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.detail-group p {
+  margin: 0.25rem 0;
+  font-size: 0.9rem;
+}
+
+.loading-indicator,
+.empty-message {
+  text-align: center;
+  padding: 3rem;
+  color: #7f8c8d;
+  font-style: italic;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  margin-top: 1rem;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.05);
+}
+
+.loading-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.loading-indicator:before {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  border: 2px solid #3498db;
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.error-message {
+  text-align: center;
+  padding: 2rem;
+  color: #e74c3c;
+  background-color: #fef5f5;
+  border-radius: 8px;
+  margin-top: 1rem;
+  border: 1px solid #fadbd8;
+  font-weight: 500;
+}

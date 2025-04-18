@@ -1,0 +1,313 @@
+/* MerchandiseForm.css */
+:root {
+  --primary-color: #1a73e8;
+  --primary-hover: #165db3;
+  --error-color: #d93025;
+  --success-color: #34a853;
+  --border-color: #dadce0;
+  --background-light: #f8f9fa;
+  --text-color: #202124;
+  --text-secondary: #5f6368;
+  --shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.merchandise-form {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  font-family: 'Roboto', sans-serif;
+  color: var(--text-color);
+}
+
+.merchandise-form h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--primary-color);
+  font-size: 2rem;
+}
+
+.merchandise-form h2 {
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 0.5rem;
+}
+
+.merchandise-form h3 {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 16px;
+  transition: border 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.form-group.error input,
+.form-group.error textarea,
+.form-group.error select {
+  border-color: var(--error-color);
+}
+
+.error-message {
+  color: var(--error-color);
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+  display: block;
+}
+
+.info-message {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+  display: block;
+}
+
+.form-separator {
+  height: 1px;
+  background-color: var(--border-color);
+  margin: 1.5rem 0;
+}
+
+.dimensions-inputs {
+  display: flex;
+  gap: 1rem;
+}
+
+.dimensions-inputs > div {
+  flex: 1;
+}
+
+.incoterms-section {
+  background-color: var(--background-light);
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.incoterms-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.incoterm-option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: white;
+}
+
+.incoterm-label {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.incoterm-code {
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+}
+
+.incoterm-description {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.incoterm-checkbox {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.calculate-button {
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-bottom: 1.5rem;
+}
+
+.calculate-button:hover {
+  background-color: var(--primary-hover);
+}
+
+.volume-result {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 500;
+  padding: 1rem;
+  background-color: var(--background-light);
+  border-radius: 4px;
+}
+
+.contact-section {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background-color: var(--background-light);
+  border-radius: 8px;
+}
+
+.merchandise-details-section {
+  margin-bottom: 2rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .merchandise-form {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+  
+  .dimensions-inputs {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .form-grid,
+  .incoterms-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Dialog styling (for ShipmentDialog component) */
+.dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.dialog-content {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 600px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.dialog-title {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.dialog-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text-secondary);
+}
+
+.dialog-body {
+  margin-bottom: 1.5rem;
+}
+
+.dialog-info-group {
+  margin-bottom: 1rem;
+}
+
+.dialog-info-label {
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.dialog-button {
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.dialog-button.primary {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+}
+
+.dialog-button.primary:hover {
+  background-color: var(--primary-hover);
+}
+
+.dialog-button.secondary {
+  background-color: white;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+}
+
+.dialog-button.secondary:hover {
+  background-color: var(--background-light);
+}

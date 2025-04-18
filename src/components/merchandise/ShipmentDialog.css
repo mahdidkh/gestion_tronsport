@@ -1,0 +1,253 @@
+/* ShipmentDialog.css */
+:root {
+  --primary-color: #1a73e8;
+  --primary-hover: #165db3;
+  --error-color: #d93025;
+  --success-color: #34a853;
+  --border-color: #dadce0;
+  --background-light: #f8f9fa;
+  --text-color: #202124;
+  --text-secondary: #5f6368;
+  --shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.dialog-content {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 700px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.dialog-content h2 {
+  color: var(--primary-color);
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--primary-color);
+}
+
+.current-date {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.date-label {
+  font-weight: 600;
+  margin-right: 0.3rem;
+}
+
+.date-value {
+  font-weight: 500;
+}
+
+.dialog-content h3 {
+  color: var(--text-color);
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.dialog-content h4 {
+  color: var(--primary-color);
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.merchandise-summary {
+  background-color: var(--background-light);
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.info-group {
+  margin-bottom: 0.75rem;
+}
+
+.info-group label {
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 0.25rem;
+  display: block;
+}
+
+.info-group p {
+  margin: 0;
+}
+
+.contact-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.sender-info,
+.destination-info {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+}
+
+.sender-info p,
+.destination-info p {
+  margin: 0.5rem 0;
+  font-size: 0.95rem;
+}
+
+.country-selection {
+  margin: 1.5rem 0;
+}
+
+.country-selection label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.country-selection select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white;
+}
+
+.rates-table {
+  margin-bottom: 1.5rem;
+}
+
+.rates-table table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.75rem;
+}
+
+.rates-table th,
+.rates-table td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.rates-table th {
+  background-color: var(--background-light);
+  font-weight: 500;
+}
+
+.total-row {
+  background-color: rgba(26, 115, 232, 0.05);
+}
+
+.loading,
+.error {
+  text-align: center;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.error {
+  color: var(--error-color);
+  background-color: rgba(217, 48, 37, 0.05);
+  border-radius: 4px;
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.cancel-button,
+.save-button {
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.cancel-button {
+  background-color: white;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+}
+
+.cancel-button:hover {
+  background-color: var(--background-light);
+}
+
+.save-button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+}
+
+.save-button:hover {
+  background-color: var(--primary-hover);
+}
+
+.save-button.loading {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.save-button:disabled,
+.cancel-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .dialog-content {
+    padding: 1.5rem;
+    width: 95%;
+    max-height: 85vh;
+  }
+
+  .info-grid,
+  .contact-info {
+    grid-template-columns: 1fr;
+  }
+
+  .dialog-actions {
+    flex-direction: column-reverse;
+  }
+
+  .cancel-button,
+  .save-button {
+    width: 100%;
+  }
+}
