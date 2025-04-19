@@ -1,5 +1,6 @@
-import { useState, FormEvent } from 'react';
-import { authService } from '../../services/authService';
+import { useState, FormEvent, useEffect } from 'react';
+import { authService, testApiConnection } from '../../services/authService';
+import { ApiHealthCheck } from '../debug/ApiHealthCheck';
 import './Auth.css';
 
 interface RegisterProps {
@@ -15,6 +16,25 @@ export const Register = ({ onNavigateToLogin }: RegisterProps) => {
   });
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [apiStatus, setApiStatus] = useState<{success?: boolean, message: string}>({ message: 'Checking API connection...' });
+
+  // Test API connection on component mount
+  useEffect(() => {
+    const checkApiConnection = async () => {
+      try {
+        const result = await testApiConnection();
+        if (result.success) {
+          setApiStatus({ success: true, message: 'API connected successfully' });
+        } else {
+          setApiStatus({ success: false, message: `API connection failed: ${result.error}` });
+        }
+      } catch (err) {
+        setApiStatus({ success: false, message: 'API connection check failed' });
+      }
+    };
+
+    checkApiConnection();
+  }, []);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -41,11 +61,19 @@ export const Register = ({ onNavigateToLogin }: RegisterProps) => {
     }
   };
 
+  const [showDebug, setShowDebug] = useState(false);
+
   return (
     <div className="auth-container">
+      {showDebug && <ApiHealthCheck />}
       <div className="auth-card">
         <h2>Register</h2>
         {error && <div className="auth-error">{error}</div>}
+
+        {/* API Status Indicator */}
+        <div className={`api-status ${apiStatus.success === true ? 'success' : apiStatus.success === false ? 'error' : 'pending'}`}>
+          {apiStatus.message}
+        </div>
 
         <form onSubmit={handleSubmit} className="auth-form">
           <div className="form-group">
@@ -106,6 +134,16 @@ export const Register = ({ onNavigateToLogin }: RegisterProps) => {
             Login
           </button>
         </p>
+
+        {/* Debug toggle button */}
+        <div className="debug-toggle">
+          <button
+            onClick={() => setShowDebug(!showDebug)}
+            className="debug-toggle-button"
+          >
+            {showDebug ? 'Hide' : 'Show'} Debug Info
+          </button>
+        </div>
       </div>
     </div>
   );
